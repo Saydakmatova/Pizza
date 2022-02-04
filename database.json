@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "categories": "pizza",
+      "name": "Двойной цыпленок",
+      "ingredients": " Цыпленок, моцарелла, альфредо соус от",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/f351d4358f134c31b5bed9093faf38e3_292x292.jpeg",
+      "price": 265,
+      "id": 2
+    },
+    {
+      "categories": "pizza",
+      "name": "Сырная 🌱 ",
+      "ingredients": "Увеличенная порция моцареллы, сыры чеддер и пармезан, соус альфредо ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/9d51c6a71e514923a655579ff838ac1c_292x292.jpeg",
+      "price": 245,
+      "id": 3
+    },
+    {
+      "categories": "pizza",
+      "name": "Пепперони Фреш ",
+      "ingredients": "Пепперони из цыпленка, увеличенная порция моцареллы, томаты, томатный соус ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/596c4ae43b6a4963824952c9fca49fd8_292x292.jpeg",
+      "price": 245,
+      "id": 4
+    },
+    {
+      "categories": "pizza",
+      "name": "2 пиццы ",
+      "ingredients": "Самое популярное комбо из 2 пицц 30 см. Большой выбор",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/ComboTemplates/fe11cd84d2654f9986a9c77d75d9d375_292x292.webp",
+      "price": 979,
+      "id": 5
+    },
+    {
+      "categories": "combo",
+      "name": "4 Додстера",
+      "ingredients": " 4 любых Додстера на выбор: Острый или Классический ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/ComboTemplates/7e53a65eaff049e0b4382e877833e727_292x292.webp",
+      "price": 519,
+      "id": 6
+    },
+    {
+      "categories": "snacks",
+      "name": "Острый Додстер 🌶️🌶️ ",
+      "ingredients": "Горячая закуска с цыпленком, перцем халапеньо, солеными огурчиками, томатами, моцареллой и соусом барбекю в тонкой пшеничной лепешке ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/29d4bf3571804872acaa97d496c09e48_292x292.jpeg",
+      "price": 149,
+      "id": 7
+    }
+  ]
+}

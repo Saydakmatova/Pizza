@@ -1,0 +1,14 @@
+@import "../variables/_variables.scss";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $latoFont !important;
+}
+a {
+  color: unset;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
