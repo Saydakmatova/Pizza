@@ -78,7 +78,7 @@ export const getCart = () => (dispatch) => {
   dispatch(action);
 };
 
-export const changeCount = (count, id) => {
+export const changeCount = (count, id) => (dispatch) => {
   let cart = JSON.parse(localStorage.getItem("cart"));
   cart.products = cart.products.map((item) => {
     if (item.product.id === id) {
@@ -93,5 +93,5 @@ export const changeCount = (count, id) => {
     return prev + item.subPrice;
   }, 0);
   localStorage.setItem("cart", JSON.stringify(cart));
-  getCart();
+  dispatch({ type: "CHANGE_COUNT", payload: cart });
 };

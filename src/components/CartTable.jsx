@@ -14,24 +14,23 @@ import { getCart, changeCount } from "../actions/ClientAction";
 export default function CartTable() {
   const { cart } = useSelector((state) => state.clientReducer);
   const dispatch = useDispatch();
-  //   const { cartCount } = useSelector((state) => state.clientReducer);
 
   React.useEffect(() => {
     dispatch(getCart());
   }, []);
-
+  console.log(cart);
   if (!cart) {
     return <h2>Loading...</h2>;
   }
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} style={{ marginTop: 100 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Название</TableCell>
-              <TableCell align="right">Фото</TableCell>
-              <TableCell align="right">Цена</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Image</TableCell>
+              <TableCell align="right">Price</TableCell>
               <TableCell align="right">Кол-во</TableCell>
               <TableCell align="right">Сумма</TableCell>
             </TableRow>
@@ -45,6 +44,7 @@ export default function CartTable() {
                 <TableCell component="th" scope="row">
                   {item.product.name}
                 </TableCell>
+
                 <TableCell align="right">
                   <img src={item.product.image} alt="cart-img" width={100} />
                 </TableCell>
@@ -57,7 +57,7 @@ export default function CartTable() {
                       if (e.target.value < 1) {
                         return;
                       }
-                      changeCount(e.target.value, item.product.id);
+                      dispatch(changeCount(e.target.value, item.product.id));
                     }}
                     value={item.count}
                   />

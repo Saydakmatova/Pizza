@@ -67,6 +67,7 @@ const ProductCard = (props) => {
           >
             {props.item.name}
           </Typography>
+          <Typography>{props.item.ingredients}</Typography>
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography className={classes.price}>

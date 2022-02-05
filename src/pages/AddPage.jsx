@@ -34,9 +34,9 @@ const AddPage = () => {
       </h3>
       <form onSubmit={handleSubmit}>
         <FormControl fullWidth>
-          <InputLabel id="categories">Categories</InputLabel>
+          <InputLabel id="categories-select">Categories</InputLabel>
           <Select
-            labelId="categories"
+            labelId="categories-select"
             onChange={(e) =>
               setNewProduct({ ...product, categories: e.target.value })
             }

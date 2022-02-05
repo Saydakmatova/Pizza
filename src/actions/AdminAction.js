@@ -14,7 +14,7 @@ export const addProducts = (product) => {
 export const getProducts = () => {
   return async (dispatch) => {
     try {
-      let response = await axios(API);
+      let response = await axios(`${API}/${window.location.search}`);
       const action = {
         type: "GET_PRODUCTS",
         payload: response.data,

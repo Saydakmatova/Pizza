@@ -13,6 +13,8 @@ export const clientReducer = (state = INIT_STATE, action) => {
       return { ...state, cartCount: action.payload };
     case "GET_CART":
       return { ...state, cart: action.payload };
+    case "CHANGE_COUNT":
+      return { ...state, cart: action.payload };
     default:
       return state;
   }
