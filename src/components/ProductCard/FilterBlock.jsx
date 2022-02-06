@@ -5,7 +5,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getProducts } from "../../actions/AdminAction";
@@ -19,7 +19,9 @@ const FilterBlock = () => {
   const [categoriesValue, setCategoriesValue] = useState(
     search.get("categories") || ""
   );
-
+  // const getValue = ({ price }) => +price || 0;
+  // const sortByPrice = [{ price: 127 }, { price: 10 }];
+  // sortByPrice.sort((a, b) => getValue(a) - getValue(b));
   const filterProdusts = (key, value) => {
     search.set(key, value);
     let newPath = `${window.location.pathname}?${search.toString()}`;
@@ -28,6 +30,11 @@ const FilterBlock = () => {
     setCategoriesValue(search.get("q") || "");
     dispatch(getProducts());
   };
+  // useEffect(() => {
+  //   if (getValue === "Low to hight" || "high to low") {
+  //     sortByPrice();
+  //   }
+  // }, [getValue]);
   return (
     <div
       style={{
@@ -58,8 +65,9 @@ const FilterBlock = () => {
           <MenuItem value="snacks">Закуски</MenuItem>
           <MenuItem value="desserts">Десерты</MenuItem>
           <MenuItem value="beverages">Напитки</MenuItem>
-          <MenuItem value={30}>Sort by price: low to high</MenuItem>
-          <MenuItem value={30}>Sort by price: high to low</MenuItem>
+          {}
+          <MenuItem value="Low to hight">Sort by price: low to high</MenuItem>
+          <MenuItem value="high to low">Sort by price: high to low</MenuItem>
         </Select>
       </FormControl>
     </div>
