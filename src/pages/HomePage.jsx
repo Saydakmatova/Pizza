@@ -1,8 +1,12 @@
 import React from "react";
-import "../components/Navbar/_navbar.scss";
+import Slider from "../components/Navbar/Slider";
 
 const HomePage = () => {
-  return <div className="navbarBg">rtxs</div>;
+  return (
+    <>
+      <Slider />;
+    </>
+  );
 };
 
 export default HomePage;

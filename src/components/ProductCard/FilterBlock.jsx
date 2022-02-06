@@ -5,12 +5,12 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getProducts } from "../../actions/AdminAction";
 
-const FilterBlock = () => {
+const FilterBlock = (props) => {
   const search = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,22 +19,31 @@ const FilterBlock = () => {
   const [categoriesValue, setCategoriesValue] = useState(
     search.get("categories") || ""
   );
-  // const getValue = ({ price }) => +price || 0;
-  // const sortByPrice = [{ price: 127 }, { price: 10 }];
-  // sortByPrice.sort((a, b) => getValue(a) - getValue(b));
-  const filterProdusts = (key, value) => {
-    search.set(key, value);
-    let newPath = `${window.location.pathname}?${search.toString()}`;
-    navigate(newPath);
-    setSearchValue(search.get("q") || "");
-    setCategoriesValue(search.get("q") || "");
-    dispatch(getProducts());
-  };
-  // useEffect(() => {
-  //   if (getValue === "Low to hight" || "high to low") {
-  //     sortByPrice();
+  // const filterProdusts = (key, value) => {
+  //   search.set(key, value);
+  //   let newPath = `${window.location.pathname}?${search.toString()}`;
+  //   navigate(newPath);
+  //   setSearchValue(search.get("q") || "");
+  //   setCategoriesValue(search.get("q") || "");
+  //   if (value === "low to hight" || "high to low") {
+  //     props.setSorting(value);
   //   }
-  // }, [getValue]);
+  //   dispatch(getProducts());
+  // };
+
+  const filterProdusts = (key, value) => {
+    if (value === "low to hight" || "high to low") {
+      props.setSorting(value);
+    } else {
+      search.set(key, value);
+      let newPath = `${window.location.pathname}?${search.toString()}`;
+      navigate(newPath);
+      setSearchValue(search.get("q") || "");
+      setCategoriesValue(search.get("q") || "");
+      dispatch(getProducts());
+    }
+  };
+
   return (
     <div
       style={{
@@ -66,7 +75,7 @@ const FilterBlock = () => {
           <MenuItem value="desserts">Десерты</MenuItem>
           <MenuItem value="beverages">Напитки</MenuItem>
           {}
-          <MenuItem value="Low to hight">Sort by price: low to high</MenuItem>
+          <MenuItem value="low to hight">Sort by price: low to high</MenuItem>
           <MenuItem value="high to low">Sort by price: high to low</MenuItem>
         </Select>
       </FormControl>
