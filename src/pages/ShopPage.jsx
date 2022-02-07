@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/AdminAction";
 import FilterBlock from "../components/ProductCard/FilterBlock";
 import ProductCard from "../components/ProductCard/ProductCard";
+import ProductsPagination from "../components/ProductsPagination";
 
 const useStyles = makeStyles({
   shopText: {
@@ -47,6 +48,7 @@ const ShopPage = () => {
             </Grid>
           ))}
         </Grid>
+        <ProductsPagination />
       </Container>
     </div>
   );

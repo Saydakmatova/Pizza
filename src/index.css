@@ -21,3 +21,10 @@ code {
   min-height: 200px;
   justify-content: space-between;
 }
+
+.products-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

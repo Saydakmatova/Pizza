@@ -1,39 +1,41 @@
-import React, { useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  updateCurrentUser,
-  GoogleAuthProvider,
-  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
-const [user, setUser] = useState("");
-function signUp(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
-}
-function logIn(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
-}
+export const userCreate = (email, password) => async (dispatch) => {
+  try {
+    let userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    let action = {
+      type: "USER_CREATE",
+      payload: userCredentials.user,
+    };
+    dispatch(action);
+    console.log(userCredentials);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-function logOut() {
-  return signOut(auth);
-}
-function googleSignIn() {
-  const googleAuthProvider = new GoogleAuthProvider();
-  return signInWithPopup(auth, googleAuthProvider);
-}
-const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  setUser(currentUser);
-});
-useEffect(() => {
-  return () => {
-    unsubscribe();
-  };
-}, []);
-
-export function useUserAuth() {
-  return useContext(userAuthContext);
-}
+export const userLogin = (email, password) => async (dispatch) => {
+  try {
+    let userCredentials = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    let action = {
+      type: "USER_LOGIN",
+      payload: userCredentials.user,
+    };
+    dispatch(action);
+    console.log(userCredentials);
+  } catch (err) {
+    console.log(err);
+  }
+};

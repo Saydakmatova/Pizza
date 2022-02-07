@@ -95,3 +95,20 @@ export const changeCount = (count, id) => (dispatch) => {
   localStorage.setItem("cart", JSON.stringify(cart));
   dispatch({ type: "CHANGE_COUNT", payload: cart });
 };
+
+// ! Pagination
+
+// const productsPerPage = 8;
+// const [currentPage, setCurrentPage] = useState(1);
+// const [posts, setPosts] = useState([]);
+
+// useEffect(() => {
+//   if (state.products) {
+//     setPosts(state.products);
+//   }
+// }, [state.products]);
+
+// const indexOfLastProduct = currentPage * productsPerPage;
+// const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+// const currentProducts = posts.slice(indexOfFirstProduct, indexOfLastProduct);
+// const totalProductsCount = posts.length;

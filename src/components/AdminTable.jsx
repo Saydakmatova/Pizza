@@ -7,13 +7,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, deleteProduct } from "../actions/AdminAction";
 
 const AdminTable = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.adminReducer);
+
+  const { user } = useSelector((state) => state.userAuthReducer);
 
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
@@ -22,7 +24,11 @@ const AdminTable = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [user]);
+
+  if (!user) {
+    return <Navigate to="/" />;
+  }
 
   if (!products) {
     return <h2>Loading...</h2>;

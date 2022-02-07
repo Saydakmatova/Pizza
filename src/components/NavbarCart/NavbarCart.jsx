@@ -78,7 +78,7 @@ const NavbarCart = () => {
               alignItems: "center",
             }}
           >
-            <Link to="/admin-panel">
+            <Link to="/auth">
               <HowToRegIcon
                 fontSize="small"
                 style={{ color: "white", marginRight: 15 }}

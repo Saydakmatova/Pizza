@@ -13,6 +13,9 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import NavbarCart from "./components/NavbarCart/NavbarCart";
 import Cart from "./pages/Cart";
+import AuthPage from "./pages/ayth/AuthPage";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
 
 const Routes = () => {
   return (
@@ -30,6 +33,9 @@ const Routes = () => {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/admin-panel/edit:id" element={<EditPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Switch>
       </BrowserRouter>
     </Provider>
