@@ -19,27 +19,16 @@ const FilterBlock = (props) => {
   const [categoriesValue, setCategoriesValue] = useState(
     search.get("categories") || ""
   );
-  // const filterProdusts = (key, value) => {
-  //   search.set(key, value);
-  //   let newPath = `${window.location.pathname}?${search.toString()}`;
-  //   navigate(newPath);
-  //   setSearchValue(search.get("q") || "");
-  //   setCategoriesValue(search.get("q") || "");
-  //   if (value === "low to hight" || "high to low") {
-  //     props.setSorting(value);
-  //   }
-  //   dispatch(getProducts());
-  // };
 
   const filterProdusts = (key, value) => {
-    if (value === "low to hight" || "high to low") {
+    setCategoriesValue(value);
+    if (value === "high to low" || value === "low to hight") {
       props.setSorting(value);
     } else {
       search.set(key, value);
       let newPath = `${window.location.pathname}?${search.toString()}`;
       navigate(newPath);
       setSearchValue(search.get("q") || "");
-      setCategoriesValue(search.get("q") || "");
       dispatch(getProducts());
     }
   };
@@ -66,9 +55,7 @@ const FilterBlock = (props) => {
           labelId="categories-select"
           label="Sorting"
         >
-          <MenuItem value={categoriesValue.split().map((item) => item)}>
-            Default sorting
-          </MenuItem>
+          <MenuItem value="">Default sorting</MenuItem>
           <MenuItem value="pizza">Пицца</MenuItem>
           <MenuItem value="combo">Комбо</MenuItem>
           <MenuItem value="snacks">Закуски</MenuItem>
