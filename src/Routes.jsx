@@ -13,9 +13,10 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import NavbarCart from "./components/NavbarCart/NavbarCart";
 import Cart from "./pages/Cart";
-import AuthPage from "./pages/ayth/AuthPage";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
+import CommentsPage from "./pages/CommentsPage";
+import AdminComments from "./pages/AdminComments";
 
 const Routes = () => {
   return (
@@ -33,9 +34,10 @@ const Routes = () => {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/admin-panel/edit:id" element={<EditPage />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/auth" element={<AuthPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/comments" element={<CommentsPage />} />
+          <Route path="/admin-comments" element={<AdminComments />} />
         </Switch>
       </BrowserRouter>
     </Provider>

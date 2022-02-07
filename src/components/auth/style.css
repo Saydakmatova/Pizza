@@ -25,14 +25,14 @@
 }
 .g-btn > div,
 .g-btn > div > svg {
-  width: 40px !important;
-  height: 38px !important;
+  width: 25px !important;
+  height: 25px !important;
 }
 .menuItem {
   display: flex;
   font-size: 14px;
 }
 .menuItem .title-user {
-  font-size: 20px !important;
+  font-size: 15px !important;
   font-family: "Urbanist", sans-serif !important;
 }

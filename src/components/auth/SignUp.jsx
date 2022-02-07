@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { userCreate } from "../../actions/UserAuthAction";
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -11,12 +11,15 @@ const SignUp = () => {
     password: "",
   };
   const [userData, setUserData] = useState(init_user);
-
+  const { user } = useSelector((state) => state.userAuthReducer);
   const handleSignUp = (e) => {
     e.preventDefault();
     dispatch(userCreate(userData.email, userData.password));
+    setUserData(init_user);
   };
-
+  if (user) {
+    return <Navigate to="/" />;
+  }
   return (
     <>
       <div className="body">
@@ -57,7 +60,7 @@ const SignUp = () => {
 
               <div className="d-grid gap-2">
                 <Button onClick={handleSignUp} variant="primary" type="Submit">
-                  Log In
+                  Sign up
                 </Button>
               </div>
             </Form>

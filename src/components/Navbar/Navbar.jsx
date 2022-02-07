@@ -149,6 +149,7 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </Box>
+
               <Box
                 sx={{
                   flexGrow: 1,
@@ -335,6 +336,38 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </Box>
+              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                <Link to="/admin-comments">
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 1,
+                      color: "black",
+                      display: "block",
+                      fontWeight: "700",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    Admin Comments
+                  </Button>
+                </Link>
+              </Box>
+              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                <Link to="/">
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 1,
+                      color: "black",
+                      display: "block",
+                      fontWeight: "700",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    Home
+                  </Button>
+                </Link>
+              </Box>
               <Box
                 sx={{
                   flexGrow: 1,
@@ -361,6 +394,7 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </Box>
+
               <Box
                 sx={{
                   flexGrow: 1,

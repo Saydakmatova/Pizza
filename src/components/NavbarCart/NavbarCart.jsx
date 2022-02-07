@@ -7,16 +7,32 @@ import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutl
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import SearchIcon from "@mui/icons-material/Search";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
-import { Badge, IconButton } from "@mui/material";
-import { useSelector } from "react-redux";
+import { Badge, IconButton, MenuItem, Avatar } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { auth } from "../../firebase";
 
 const NavbarCart = () => {
   const trigger = useScrollTrigger();
   const { cartCount } = useSelector((state) => state.clientReducer);
+  const { user } = useSelector((state) => state.userAuthReducer);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const disposer = auth.onAuthStateChanged((u) => {
+      dispatch({
+        type: "USER_LOGIN",
+        payload: u,
+      });
+    });
+
+    return () => {
+      disposer();
+    };
+  }, []);
+
   return (
     <Slide in={!trigger} mountOnEnter unmountOnExit>
       <AppBar
@@ -66,10 +82,6 @@ const NavbarCart = () => {
                 </Badge>
               </IconButton>
             </Link>
-
-            <Link to="/admin-panel">
-              <SearchIcon fontSize="small" style={{ color: "white" }} />
-            </Link>
           </div>
           <div
             style={{
@@ -78,12 +90,31 @@ const NavbarCart = () => {
               alignItems: "center",
             }}
           >
-            <Link to="/auth">
-              <HowToRegIcon
-                fontSize="small"
-                style={{ color: "white", marginRight: 15 }}
-              />
-            </Link>
+            <MenuItem className="menuItem">
+              {user ? (
+                <>
+                  <div>
+                    <IconButton className="title-user">
+                      {user.displayName ? user.displayName : user.email}
+                    </IconButton>
+                  </div>
+                  <IconButton sx={{ p: 0 }}>
+                    <Avatar
+                      alt={user.displayName ? user.displayName : user.email}
+                      src={user.photoURL ? user.photoURL : user.email}
+                      style={{ width: 25, height: 25 }}
+                    />
+                  </IconButton>
+                  <IconButton
+                    onClick={() => dispatch({ type: "USER_SIGN_OUT" })}
+                  >
+                    <LogoutOutlinedIcon style={{ width: 25, height: 25 }} />
+                  </IconButton>
+                </>
+              ) : (
+                <Link to="/login">SIGN IN</Link>
+              )}
+            </MenuItem>
             <Link to="/admin-panel">
               <FacebookOutlinedIcon
                 fontSize="small"

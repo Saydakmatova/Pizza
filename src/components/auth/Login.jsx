@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Alert, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
-import { useDispatch } from "react-redux";
-import { userLogin } from "../../actions/UserAuthAction";
+import { useDispatch, useSelector } from "react-redux";
+import { googleSignIn, userLogin } from "../../actions/UserAuthAction";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -13,12 +13,21 @@ const Login = () => {
     password: "",
   };
   const [userData, setUserData] = useState(init_user);
+  const { user } = useSelector((state) => state.userAuthReducer);
 
   const handleSignIn = (e) => {
     e.preventDefault();
     dispatch(userLogin(userData.email, userData.password));
+    setUserData(init_user);
   };
-
+  const handleSignInGoogle = (e) => {
+    e.preventDefault();
+    dispatch(googleSignIn());
+    setUserData(init_user);
+  };
+  if (user) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="body">
       <div>
@@ -65,7 +74,11 @@ const Login = () => {
           </Form>
           <hr />
           <div>
-            <GoogleButton className="g-btn" type="dark" />
+            <GoogleButton
+              onClick={handleSignInGoogle}
+              className="g-btn"
+              type="dark"
+            />
           </div>
         </div>
         <div className="p-4 box mt-3 text-center">

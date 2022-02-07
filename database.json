@@ -47,6 +47,72 @@
       "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/29d4bf3571804872acaa97d496c09e48_292x292.jpeg",
       "price": 149,
       "id": 7
+    },
+    {
+      "categories": "combo",
+      "name": "5 пицц",
+      "ingredients": "5 пицц 30 см на любой вкус. Для компании из 10–15 человек",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/ComboTemplates/353ed3c765be443c959a97013dd808f1_292x292.webp",
+      "price": 2199,
+      "id": 8
+    },
+    {
+      "categories": "snacks",
+      "name": "Ланчбокс с куриными кусочками",
+      "ingredients": " Горячий сытный обед из нежных куриных кусочков, картофеля из печи с итальянскими травами и сырного соуса ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/9849e5d652854f71a302e570cb9e16a3_292x292.jpeg",
+      "price": 279,
+      "id": 9
+    },
+    {
+      "categories": "beverages",
+      "name": "Смородиновый молочный коктейль",
+      "ingredients": "Напиток на основе молока и пломбира с замороженными ягодами черной смородины ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/e1cbe3e7a8f04f29a1ea6fca6f82b2aa_292x292.jpeg",
+      "price": 159,
+      "id": 10
+    },
+    {
+      "categories": "beverages",
+      "name": "Молочный коктейль с печеньем  ",
+      "ingredients": "Орео Напиток из молока и мороженого с добавлением дробленого печенья «Орео»",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/1a72b445d2c5427d9358d1cadb2e1e03_292x292.jpeg",
+      "price": 169,
+      "id": 11
+    },
+    {
+      "categories": "desserts",
+      "name": "Рулетики с брусникой ",
+      "ingredients": "Сладкие рулетики с натуральной брусникой, 16 шт. ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/c1b04dac00494475bbb58c70db4c7bdf_292x292.jpeg",
+      "price": 149,
+      "id": 12
+    },
+    {
+      "categories": "beverages",
+      "name": "Coca-cola",
+      "ingredients": "...",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/02225190-186d-4fe3-9e3b-a2b94c29e9d1.jpg",
+      "price": 59,
+      "id": 13
+    },
+    {
+      "categories": "beverages",
+      "name": "Кофе Латте ",
+      "ingredients": "Горячий напиток на основе эспрессо с увеличенной порцией молока ",
+      "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/bb819eaa7d194feb8c54131c582fd077_292x292.jpeg",
+      "price": 135,
+      "id": 14
+    }
+  ],
+  "comments": [
+    {
+      "comment": "qwefsd",
+      "id": 1
+    },
+    {
+      "comment": "sdf",
+      "id": 2
     }
   ]
 }

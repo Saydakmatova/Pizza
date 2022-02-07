@@ -5,7 +5,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getProducts } from "../../actions/AdminAction";
@@ -17,27 +17,29 @@ const FilterBlock = () => {
 
   const [searchValue, setSearchValue] = useState(search.get("q") || "");
   const [categoriesValue, setCategoriesValue] = useState(
-    search.get("categories") || `_${search.get('_order') || ''}` || ""
+    search.get("categories") || `_${search.get("_order") || ""}` || ""
   );
 
   useEffect(() => {
-    if (categoriesValue && !categoriesValue.startsWith('_')) {
-      search.set('categories', categoriesValue);
-      search.delete('_sort');
-      search.delete('_order');
-    } else if (categoriesValue && categoriesValue !== '_') {
-      search.delete('categories');
-      search.set('_sort', 'price');
-      search.set('_order', categoriesValue.slice(1));
+    if (categoriesValue && !categoriesValue.startsWith("_")) {
+      search.set("categories", categoriesValue);
+      search.delete("_sort");
+      search.delete("_order");
+    } else if (categoriesValue && categoriesValue !== "_") {
+      search.delete("categories");
+      search.set("_sort", "price");
+      search.set("_order", categoriesValue.slice(1));
     } else {
-      search.delete('categories');
+      search.delete("categories");
     }
 
     if (searchValue) {
-      search.set('q', searchValue);
+      search.set("q", searchValue);
     } else {
-      search.delete('q');
+      search.delete("q");
     }
+
+    search.set("_page", 1);
 
     navigate(`${window.location.pathname}?${search.toString()}`);
     setSearchValue(search.get("q") || "");
@@ -45,7 +47,7 @@ const FilterBlock = () => {
   }, [categoriesValue, searchValue]);
 
   const filterProducts = (key, value) => {
-    if (key === 'categories') {
+    if (key === "categories") {
       setCategoriesValue(value);
     } else {
       setSearchValue(value);
@@ -69,12 +71,12 @@ const FilterBlock = () => {
       <FormControl variant="standard" sx={{ minWidth: 150 }}>
         <InputLabel id="categories-select">Sorting</InputLabel>
         <Select
-          value={categoriesValue === '_' ? '' : categoriesValue}
+          value={categoriesValue === "_" ? "" : categoriesValue}
           onChange={(e) => filterProducts("categories", e.target.value)}
           labelId="categories-select"
           label="Sorting"
         >
-          <MenuItem value={''}>Default sorting</MenuItem>
+          <MenuItem value={""}>Default sorting</MenuItem>
           <MenuItem value="pizza">Пицца</MenuItem>
           <MenuItem value="combo">Комбо</MenuItem>
           <MenuItem value="snacks">Закуски</MenuItem>

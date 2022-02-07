@@ -26,9 +26,9 @@ const AdminTable = () => {
     dispatch(getProducts());
   }, [user]);
 
-  if (!user) {
-    return <Navigate to="/" />;
-  }
+  // if (!user) {
+  //   return <Navigate to="/" />;
+  // }
 
   if (!products) {
     return <h2>Loading...</h2>;

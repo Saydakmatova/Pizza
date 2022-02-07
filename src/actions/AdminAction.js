@@ -4,7 +4,7 @@ import { API } from "../helpers/const";
 export const addProducts = (product) => {
   return async (dispatch) => {
     try {
-      await axios.post(`${API}`, product);
+      await axios.post(`${API}/products`, product);
     } catch (error) {
       console.log(error);
     }
@@ -14,10 +14,13 @@ export const addProducts = (product) => {
 export const getProducts = () => {
   return async (dispatch) => {
     try {
-      let response = await axios(`${API}/${window.location.search}`);
+      let response = await axios(`${API}/products/${window.location.search}`);
       const action = {
         type: "GET_PRODUCTS",
-        payload: response.data,
+        payload: {
+          list: response.data,
+          total: response.headers["x-total-count"],
+        },
       };
       dispatch(action);
     } catch (error) {
@@ -29,7 +32,7 @@ export const getProducts = () => {
 export const deleteProduct = (id) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`${API}/${id}`);
+      await axios.delete(`${API}/products/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +42,7 @@ export const deleteProduct = (id) => {
 export const getProductToEdit = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios(`${API}/${id}`);
+      const response = await axios(`${API}/products/${id}`);
       let action = {
         type: "GET_PRODUCT_TO_EDIT",
         payload: response.data,
@@ -54,8 +57,34 @@ export const getProductToEdit = (id) => {
 export const saveEditedProduct = (edit) => {
   return async (dispatch) => {
     try {
-      await axios.patch(`${API}/${edit.id}`, edit);
+      await axios.patch(`${API}/products/${edit.id}`, edit);
       getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+// comments crud
+export const addComments = (comments) => {
+  return async (dispatch) => {
+    try {
+      await axios.post(`${API}/comments`, comments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getComments = () => {
+  return async (dispatch) => {
+    try {
+      let response = await axios(`${API}/comments/${window.location.search}`);
+      const action = {
+        type: "GET_COMMENTS",
+        payload: response.data,
+      };
+      dispatch(action);
     } catch (error) {
       console.log(error);
     }
