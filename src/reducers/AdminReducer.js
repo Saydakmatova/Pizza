@@ -17,6 +17,8 @@ export const adminReducer = (state = INIT_STATE, action) => {
       return { ...state, productToEdit: action.payload };
     case "GET_COMMENTS":
       return { ...state, posts: action.payload };
+    case "NEW_COMMENT":
+      return { ...state, posts: [action.payload, ...state.posts] };
     default:
       return state;
   }
