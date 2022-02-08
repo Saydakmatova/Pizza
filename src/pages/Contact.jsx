@@ -7,16 +7,21 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Link } from "react-router-dom";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-const ContactPage = () => {
+const ContactPage = (props) => {
   return (
     <>
-      {/* <div>
-        <Map google={this.props.google} zoom={14}>
-          <Marker onClick={this.onMarkerClick} name={"Current location"} />
+      <div>
+        <Map google={props.google} zoom={14}>
+          <Marker
+            title={"The marker`s title will appear as a tooltip."}
+            position={{ lat: -34.397, lng: 150.644 }}
+            onClick={props.onMarkerClick}
+            name={"Current location"}
+          />
 
-          <InfoWindow onClose={this.onInfoWindowClose}></InfoWindow>
+          <InfoWindow onClose={props.onInfoWindowClose}></InfoWindow>
         </Map>
-      </div> */}
+      </div>
       <footer
         style={{ marginTop: 100 }}
         className="bg-black text-center text-white"
@@ -140,5 +145,5 @@ const ContactPage = () => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: "YOUR_GOOGLE_API_KEY_GOES_HERE",
+  apiKey: "AIzaSyBl8dNatG7XhMznos5YSs0If4lHHg-Y5sM",
 })(ContactPage);
