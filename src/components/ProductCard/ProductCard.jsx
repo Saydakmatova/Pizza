@@ -11,11 +11,14 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addProductToCart,
+  addProductToFavorite,
   checkProductInCart,
+  checkProductInFavorites,
   deleteProductFromCart,
+  deleteProductFromFavorite,
 } from "../../actions/ClientAction";
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 const useStyles = makeStyles({
   button: {
     fontWeight: 600,
@@ -47,15 +50,42 @@ const ProductCard = (props) => {
   useEffect(() => {}, [cartCount]);
   const classes = useStyles();
   const navigate = useNavigate();
-
   return (
     <>
+      {checkProductInFavorites(props.item.id) ? (
+        <Button
+          onClick={() => dispatch(deleteProductFromFavorite(props.item.id))}
+          className={classes.favorite}
+        >
+          <FavoriteIcon
+            style={{
+              fontSize: "30",
+              color: "red",
+              marginLeft: 200,
+            }}
+          />
+        </Button>
+      ) : (
+        <Button
+          onClick={() => dispatch(addProductToFavorite(props.item))}
+          className={classes.favorite}
+        >
+          <FavoriteIcon
+            style={{
+              fontSize: "30",
+              color: "rgb(255, 210, 179)",
+              marginLeft: 200,
+            }}
+          />
+        </Button>
+      )}
+
       <Card
-        onClick={() => navigate(`/comments/${props.item.id}`)}
         sx={{ maxWidth: 345 }}
         style={{ border: "none", boxShadow: "none" }}
       >
         <CardMedia
+          onClick={() => navigate(`/comments/${props.item.id}`)}
           component="img"
           height="200"
           image={props.item.image}

@@ -9,19 +9,24 @@ import {
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getComments } from "../actions/AdminAction";
+import { deleteComment, getCommentsAll } from "../actions/AdminAction";
 
 const AdminComments = () => {
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.adminReducer);
+  const { allPosts } = useSelector((state) => state.adminReducer);
   useEffect(() => {
-    dispatch(getComments());
+    dispatch(getCommentsAll());
   }, []);
 
-  if (!posts) {
+  if (!allPosts) {
     return <h2>Loading...</h2>;
   }
+
+  const handleDelete = (id) => {
+    dispatch(deleteComment(id));
+    dispatch(getCommentsAll());
+  };
+  console.log(allPosts);
   return (
     <div style={{ marginTop: 150 }}>
       <TableContainer>
@@ -29,12 +34,12 @@ const AdminComments = () => {
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
-              <TableCell>#</TableCell>
               <TableCell>Comments</TableCell>
+              <TableCell>User</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {posts.map((row) => (
+            {allPosts.map((row) => (
               <TableRow
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -44,20 +49,16 @@ const AdminComments = () => {
                   <Button
                     color="error"
                     variant="contained"
-                    // onClick={() => handleDelete(item.id)}
+                    onClick={() => handleDelete(row.id)}
                   >
                     DEl
                   </Button>
                 </TableCell>
-                <TableCell>
-                  <Link to={`/`}>
-                    <Button color="warning" variant="contained">
-                      Edit
-                    </Button>
-                  </Link>
+                <TableCell component="th" scope="row">
+                  {row.content}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {row.comment}
+                  {row.user.email}
                 </TableCell>
               </TableRow>
             ))}

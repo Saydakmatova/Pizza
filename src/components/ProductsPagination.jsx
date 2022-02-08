@@ -12,7 +12,7 @@ const ProductsPagination = () => {
   const search = new URLSearchParams(window.location.search);
 
   const { total } = useSelector((state) => state.adminReducer);
-  const productsPerPage = 4;
+  const productsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(search.get("_page") || 1);
 
   useEffect(() => {

@@ -3,6 +3,10 @@ const INIT_STATE = {
     ? JSON.parse(localStorage.getItem("cart")).products.length
     : 0,
   cart: null,
+  favoriteCount: JSON.parse(localStorage.getItem("favorite"))
+    ? JSON.parse(localStorage.getItem("favorite")).products.length
+    : 0,
+  favorite: null,
 };
 
 export const clientReducer = (state = INIT_STATE, action) => {
@@ -15,6 +19,13 @@ export const clientReducer = (state = INIT_STATE, action) => {
       return { ...state, cart: action.payload };
     case "CHANGE_COUNT":
       return { ...state, cart: action.payload };
+    case "ADD_PRODUCT_TO_FAVORITE":
+      return { ...state, favoriteCount: action.payload };
+    case "DELETE_PRODUCT_FROM_FAVORITE":
+      return { ...state, favoriteCount: action.payload };
+    case "GET_FAVORITE":
+      return { ...state, favorite: action.payload };
+
     default:
       return state;
   }

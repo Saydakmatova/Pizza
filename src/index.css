@@ -69,3 +69,283 @@ code {
   min-height: 42px;
   box-shadow: 8px 8px 5px #888888;
 }
+
+/* about*/
+
+p {
+  margin: 0;
+}
+h2 {
+  font-size: 50px;
+  margin-bottom: 58px;
+}
+.container {
+  width: 1170px;
+  margin: 0 auto;
+}
+header a {
+  color: #fff;
+}
+.logo {
+  margin-right: 69px;
+}
+.menu {
+  display: flex;
+}
+.menu li a {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+.menu li {
+  margin-right: 40px;
+}
+.tell {
+  font-size: 17px;
+  margin-left: auto;
+  letter-spacing: 0.1em;
+}
+.nav {
+  display: flex;
+  align-items: center;
+}
+.offer {
+  text-transform: uppercase;
+  margin-top: 216px;
+}
+.offer p {
+  font-size: 30px;
+  letter-spacing: 0.1em;
+}
+.offer h1 {
+  font-size: 100px;
+  margin-bottom: 19px;
+  margin-top: -9px;
+  letter-spacing: 0.02em;
+  font-family: "Anton" serif;
+}
+.btn {
+  display: block;
+  width: 238px;
+  padding: 15px;
+  font-size: 17px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  padding: 17px 47px;
+  border: 1px solid #ffffff;
+  border: 1px solid #ffffff; /*??????*/
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+.discription {
+  display: flex;
+  justify-content: space-between;
+}
+.discription p {
+  font-family: Open Sans;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 1.62em;
+}
+.desc-left,
+.desc-right {
+  width: 567px;
+}
+.gallery {
+  margin-top: 67px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* works*/
+
+.works {
+  display: flex;
+  flex-wrap: wrap;
+}
+.works__item {
+  width: 25%;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+}
+.works__item:hover .works__content {
+  opacity: 1;
+}
+.works__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate3d(-50%, -50%, 0);
+}
+.works__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgb(232, 69, 69, 0.9);
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+.works__title {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+.works__text {
+  font-size: 14px;
+  color: #fff;
+}
+.team {
+  margin: 100px 0 70px;
+}
+.team__inner {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px, -20px;
+}
+.team__item {
+  width: 20%;
+  padding: 20px 20px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.team__photo {
+  display: flex;
+  max-width: 100%;
+  height: 250px;
+  margin-bottom: 20px;
+}
+.team__name {
+  margin-bottom: 8px;
+  font-size: 22px;
+  color: #2d3033;
+}
+.team__prof {
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-size: 11px;
+  color: #e84545;
+  text-transform: uppercase;
+}
+.team__text {
+  font-size: 14px;
+  color: #6c7279;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+/*billing Adress*/
+@import url("https://rsms.me/inter/inter.css");
+
+:root {
+  --color-gray: #737888;
+  --color-lighter-gray: #e3e5ed;
+  --color-light-gray: #f7f7fa;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.h1 {
+  margin-bottom: 1rem;
+}
+
+.p {
+  color: var(--color-gray);
+}
+
+.hr {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-light-gray);
+  border: 0;
+  margin: 2rem 0;
+}
+
+.container1 {
+  max-width: 40rem;
+  padding: 10vw 2rem 0;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.form1 {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-lighter-gray);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.field__label {
+  color: var(--color-gray);
+  font-size: 0.6rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.field__input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+}
+.field:focus-within {
+  border-color: #000;
+}
+.button1 {
+  background-color: #ff5730;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: block;
+  color: #fff;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+}
+.button:focus-visible {
+  background-color: #333;
+}
+
+.ProductPage {
+  margin-top: 200px;
+  margin-right: 200px;
+}
+.container1 {
+  margin-top: 50px;
+}

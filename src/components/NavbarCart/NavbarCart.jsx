@@ -13,10 +13,13 @@ import { Badge, IconButton, MenuItem, Avatar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { auth } from "../../firebase";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const NavbarCart = () => {
   const trigger = useScrollTrigger();
-  const { cartCount } = useSelector((state) => state.clientReducer);
+  const { cartCount, favoriteCount } = useSelector(
+    (state) => state.clientReducer
+  );
   const { user } = useSelector((state) => state.userAuthReducer);
   const dispatch = useDispatch();
 
@@ -81,6 +84,12 @@ const NavbarCart = () => {
                   />
                 </Badge>
               </IconButton>
+            </Link>
+            <Link to="/favorites" style={{ color: "white" }}>
+              <Badge color="error" badgeContent={favoriteCount}>
+                Favorites
+                <FavoriteIcon />
+              </Badge>
             </Link>
           </div>
           <div

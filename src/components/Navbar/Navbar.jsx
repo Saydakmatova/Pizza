@@ -379,7 +379,7 @@ const Navbar = () => {
                   },
                 }}
               >
-                <Link to="/gallery">
+                <Link to="/about">
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -390,7 +390,7 @@ const Navbar = () => {
                       textTransform: "capitalize",
                     }}
                   >
-                    Gallery
+                    About
                   </Button>
                 </Link>
               </Box>

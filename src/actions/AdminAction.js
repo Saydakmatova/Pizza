@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API } from "../helpers/const";
-import {auth} from "../firebase";
+import { auth } from "../firebase";
 
 export const addProducts = (product) => {
   return async (dispatch) => {
@@ -67,6 +67,7 @@ export const saveEditedProduct = (edit) => {
 };
 
 // comments crud
+
 export const addComments = (id, content) => {
   return async (dispatch) => {
     try {
@@ -82,7 +83,7 @@ export const addComments = (id, content) => {
         },
       });
       dispatch({
-        type: 'NEW_COMMENT',
+        type: "NEW_COMMENT",
         payload: res.data,
       });
     } catch (error) {
@@ -100,6 +101,31 @@ export const getComments = (id) => {
         payload: response.data,
       };
       dispatch(action);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getCommentsAll = () => {
+  return async (dispatch) => {
+    try {
+      let response = await axios(`${API}/comments`);
+      const action = {
+        type: "GET_COMMENTS_ALL",
+        payload: response.data,
+      };
+      dispatch(action);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteComment = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`${API}/comments/${id}`);
     } catch (error) {
       console.log(error);
     }

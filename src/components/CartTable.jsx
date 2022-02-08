@@ -10,6 +10,7 @@ import { TableFooter, Button } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart, changeCount } from "../actions/ClientAction";
+import { Link } from "react-router-dom";
 
 export default function CartTable() {
   const { cart } = useSelector((state) => state.clientReducer);
@@ -18,7 +19,6 @@ export default function CartTable() {
   React.useEffect(() => {
     dispatch(getCart());
   }, []);
-  console.log(cart);
   if (!cart) {
     return <h2>Loading...</h2>;
   }
@@ -78,9 +78,13 @@ export default function CartTable() {
           </TableFooter>
         </Table>
       </TableContainer>
-      <div className="order-button">
-        <Button variant="contained">Оформить заказ</Button>
-      </div>
+      <Link to="/cart/billing">
+        <div className="order-button">
+          <Button style={{ backgroundColor: "#ff5730" }} variant="contained">
+            Оформить заказ
+          </Button>
+        </div>
+      </Link>
     </>
   );
 }
