@@ -36,7 +36,7 @@ const Routes = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/comments" element={<CommentsPage />} />
+          <Route path="/comments/:id" element={<CommentsPage />} />
           <Route path="/admin-comments" element={<AdminComments />} />
         </Switch>
       </BrowserRouter>

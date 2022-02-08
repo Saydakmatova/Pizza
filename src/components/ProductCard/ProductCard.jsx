@@ -8,13 +8,13 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   addProductToCart,
   checkProductInCart,
   deleteProductFromCart,
 } from "../../actions/ClientAction";
+import {useNavigate} from "react-router-dom";
 
 const useStyles = makeStyles({
   button: {
@@ -39,15 +39,19 @@ const useStyles = makeStyles({
     fontSize: 16,
   },
 });
+
 const ProductCard = (props) => {
   const dispatch = useDispatch();
   const { cartCount } = useSelector((state) => state.clientReducer);
 
   useEffect(() => {}, [cartCount]);
   const classes = useStyles();
+  const navigate = useNavigate();
+
   return (
     <>
       <Card
+        onClick={() => navigate(`/comments/${props.item.id}`)}
         sx={{ maxWidth: 345 }}
         style={{ border: "none", boxShadow: "none" }}
       >

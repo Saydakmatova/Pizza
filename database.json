@@ -107,12 +107,39 @@
   ],
   "comments": [
     {
-      "comment": "qwefsd",
+      "product_id": "4",
+      "content": "ass",
+      "user": {
+        "uid": "VAMKq3Mtq8dtNjG0mKvWtMANVc62",
+        "email": "tabekg@gmail.com",
+        "displayName": "Бекболот Тажибаев",
+        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GgfRUomDNzydx2Dj3AyXLoapce2CzxhgjDH9Y7I_g=s96-c"
+      },
       "id": 1
     },
     {
-      "comment": "sdf",
+      "product_id": "4",
+      "content": "hfgfg",
+      "created_at": "2022-02-07T19:35:46.909Z",
+      "user": {
+        "uid": "VAMKq3Mtq8dtNjG0mKvWtMANVc62",
+        "email": "tabekg@gmail.com",
+        "displayName": "Бекболот Тажибаев",
+        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GgfRUomDNzydx2Dj3AyXLoapce2CzxhgjDH9Y7I_g=s96-c"
+      },
       "id": 2
+    },
+    {
+      "product_id": "5",
+      "content": "fgfg",
+      "created_at": "2022-02-07T19:36:35.233Z",
+      "user": {
+        "uid": "VAMKq3Mtq8dtNjG0mKvWtMANVc62",
+        "email": "tabekg@gmail.com",
+        "displayName": "Бекболот Тажибаев",
+        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GgfRUomDNzydx2Dj3AyXLoapce2CzxhgjDH9Y7I_g=s96-c"
+      },
+      "id": 3
     }
   ]
 }
