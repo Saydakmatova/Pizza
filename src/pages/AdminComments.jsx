@@ -1,5 +1,6 @@
 import {
   Button,
+  Container,
   Table,
   TableBody,
   TableCell,
@@ -29,42 +30,44 @@ const AdminComments = () => {
   console.log(allPosts);
   return (
     <div style={{ marginTop: 150 }}>
-      <TableContainer>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>#</TableCell>
-              <TableCell>Comments</TableCell>
-              <TableCell>User</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {allPosts.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                {" "}
-                <TableCell>
-                  <Button
-                    color="error"
-                    variant="contained"
-                    onClick={() => handleDelete(row.id)}
-                  >
-                    DEl
-                  </Button>
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {row.content}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {row.user.email}
-                </TableCell>
+      <Container>
+        <TableContainer>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>Comments</TableCell>
+                <TableCell>User</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {allPosts.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {" "}
+                  <TableCell>
+                    <Button
+                      color="error"
+                      variant="contained"
+                      onClick={() => handleDelete(row.id)}
+                    >
+                      DEl
+                    </Button>
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {row.content}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {row.user.email}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     </div>
   );
 };

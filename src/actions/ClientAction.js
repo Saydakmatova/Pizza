@@ -186,10 +186,10 @@ export const getProductsToBot = (info, cart) => {
           params: {
             parse_mode: "HTML",
             text: ` Заказы 
-            firs tName: ${info.name}
-            last Name: ${info.email}
+            firs tName: ${info.firstName}
+            last Name: ${info.lastName}
             address: ${info.address}
-            country: ${info.city}
+            country: ${info.country}
             ${cart.products.reduce(
               (item, cur) =>
                 item +

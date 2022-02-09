@@ -19,6 +19,7 @@ import {
 } from "../../actions/ClientAction";
 import { useNavigate } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import CommentBankOutlinedIcon from "@mui/icons-material/CommentBankOutlined";
 const useStyles = makeStyles({
   button: {
     fontWeight: 600,
@@ -79,13 +80,19 @@ const ProductCard = (props) => {
           />
         </Button>
       )}
-
+      <CommentBankOutlinedIcon
+        style={{
+          fontSize: "30",
+          color: "green",
+          marginLeft: 208,
+        }}
+        onClick={() => navigate(`/comments/${props.item.id}`)}
+      />
       <Card
         sx={{ maxWidth: 345 }}
         style={{ border: "none", boxShadow: "none" }}
       >
         <CardMedia
-          onClick={() => navigate(`/comments/${props.item.id}`)}
           component="img"
           height="200"
           image={props.item.image}

@@ -9,8 +9,8 @@ import ProductsPagination from "../components/ProductsPagination";
 
 const useStyles = makeStyles({
   shopText: {
-    paddingTop: 100,
-    paddingBottom: 100,
+    paddingTop: 130,
+    paddingBottom: 20,
     textAlign: "center",
     fontSize: 62,
     fontWeight: 900,

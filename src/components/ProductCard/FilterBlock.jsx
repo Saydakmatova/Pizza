@@ -56,6 +56,7 @@ const FilterBlock = () => {
 
   return (
     <div
+      className="filter-block"
       style={{
         display: "flex",
         justifyContent: "space-between",
@@ -63,12 +64,17 @@ const FilterBlock = () => {
       }}
     >
       <TextField
+        className="filter-right"
         value={searchValue}
         onChange={(e) => filterProducts("q", e.target.value)}
         variant="standard"
         label="Живой поиск..."
       />
-      <FormControl variant="standard" sx={{ minWidth: 150 }}>
+      <FormControl
+        className="filter-left"
+        variant="standard"
+        sx={{ minWidth: 150 }}
+      >
         <InputLabel id="categories-select">Sorting</InputLabel>
         <Select
           value={categoriesValue === "_" ? "" : categoriesValue}

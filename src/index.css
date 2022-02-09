@@ -70,6 +70,12 @@ code {
   box-shadow: 8px 8px 5px #888888;
 }
 
+/*navbar*/
+
+.css-3foddc-MuiButtonBase-root-MuiButton-root {
+  width: 140px !important;
+}
+
 /* about*/
 
 p {
@@ -79,10 +85,11 @@ h2 {
   font-size: 50px;
   margin-bottom: 58px;
 }
-.container {
-  width: 1170px;
-  margin: 0 auto;
-}
+
+/* .css-11b3ww9-MuiPaper-root-MuiAppBar-root {
+  top: 52px !important;
+} */
+
 header a {
   color: #fff;
 }
@@ -143,12 +150,13 @@ header a {
 }
 .discription {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  text-align: center;
 }
 .discription p {
   font-family: Open Sans;
   font-weight: 400;
-  text-align: justify;
   line-height: 1.62em;
 }
 .desc-left,
@@ -158,9 +166,36 @@ header a {
 .gallery {
   margin-top: 67px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
+@media screen and (max-width: 1024px) {
+  .discription {
+    justify-content: center;
+  }
+  .desc-left,
+  .desc-right {
+    width: 80%;
+  }
+}
 
+@media screen and (max-width: 768px) {
+  .about-page {
+    margin-top: 100px;
+  }
+  .gallery {
+    justify-content: space-around;
+  }
+  .gallery img {
+    margin-top: 10px;
+  }
+  .about-h1 {
+    font-size: 40px !important;
+  }
+  .discription {
+    justify-content: center;
+  }
+}
 /* works*/
 
 .works {
@@ -250,6 +285,22 @@ header a {
   margin-bottom: 40px;
 }
 
+@media screen and (max-width: 768px) {
+  .works__item {
+    width: 33.33%;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .works__item {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .works__item {
+    width: 100%;
+  }
+}
 /*billing Adress*/
 @import url("https://rsms.me/inter/inter.css");
 
@@ -348,4 +399,31 @@ header a {
 }
 .container1 {
   margin-top: 50px;
+}
+
+/* filter*/
+@media screen and (max-width: 425px) {
+  .filter-block {
+    flex-direction: column !important;
+  }
+  .filter-right {
+    width: 60%;
+    margin-left: 20px !important;
+  }
+  .filter-left {
+    width: 60%;
+    margin-left: 20px !important;
+  }
+}
+/* navbar*/
+@media screen and (max-width: 425px) {
+  .span-favorite {
+    display: none;
+  }
+  .menuItem .title-user {
+    display: none;
+  }
+  .phone-number {
+    display: none;
+  }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Contact from "./pages/Contact";
 import AboutPage from "./pages/AboutPage";
 import ShopPage from "./pages/ShopPage";
 import AddPage from "./pages/AddPage";
@@ -18,6 +17,7 @@ import CommentsPage from "./pages/CommentsPage";
 import AdminComments from "./pages/AdminComments";
 import FavoritePage from "./pages/FavoritePage";
 import BillingAddress from "./pages/BillingAddress";
+import Contact from "./pages/Contact";
 
 const Routes = () => {
   return (
@@ -29,8 +29,6 @@ const Routes = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/admin-panel" element={<AdminPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/admin-panel/edit:id" element={<EditPage />} />

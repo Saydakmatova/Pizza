@@ -17,10 +17,17 @@ import "../Navbar/_navbar.scss";
 import Collapse from "@mui/material/Collapse";
 
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { useSelector } from "react-redux";
 
-const pages = ["Admin", "Add PRODUCT", "About"];
+const pages = [
+  "Admin",
+  "Add Products",
+  "Admin Comments",
+  "Home",
+  "About",
+  "Shop",
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -41,7 +48,10 @@ const Navbar = () => {
   };
 
   const trigger = useScrollTrigger();
-
+  const { user } = useSelector((state) => state.userAuthReducer);
+  if (!user) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <>
       <Collapse in={trigger}>
@@ -50,7 +60,7 @@ const Navbar = () => {
           style={{
             backgroundColor: "#FFFFFFED",
             opacity: 0.5,
-            top: trigger ? 0 : 40,
+            top: trigger ? 0 : 52,
           }}
         >
           <Container>
@@ -111,123 +121,239 @@ const Navbar = () => {
                 noWrap
                 component="div"
                 sx={{
+                  color: "black",
                   flexGrow: 1,
                   display: { xs: "flex", md: "none" },
                 }}
               >
                 PIZZA
               </Typography>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                <Link to="/add">
-                  <Button
-                    onClick={handleCloseNavMenu}
+              {user.email === "admin@gmail.com" ? (
+                <>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -5,
                     }}
                   >
-                    Add Products
-                  </Button>
-                </Link>
-              </Box>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                <Link to="/admin-panel">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/add">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Add Products
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -3,
                     }}
                   >
-                    Admin Panel
-                  </Button>
-                </Link>
-              </Box>
+                    <Link to="/admin-panel">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -7,
+                    }}
+                  >
+                    <Link to="/admin-comments">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Admin Comments
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -8,
+                    }}
+                  >
+                    <Link to="/">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        fontWeight: "700",
+                        textTransform: "capitalize",
+                      },
+                      marginRight: -4,
+                    }}
+                  >
+                    <Link to="/about">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        About
+                      </Button>
+                    </Link>
+                  </Box>
 
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                  },
-                }}
-              >
-                <Link to="/gallery">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        textTransform: "capitalize",
+                      },
                     }}
                   >
-                    Gallery
-                  </Button>
-                </Link>
-              </Box>
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                  },
-                }}
-              >
-                <Link to="/shop">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/shop">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          fontWeight: "700",
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Shop
+                      </Button>
+                    </Link>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginLeft: "100px",
+                      marginRight: "40px",
                     }}
                   >
-                    Shop
-                  </Button>
-                </Link>
-              </Box>
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                  },
-                }}
-              >
-                <Link to="/contact">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                          fontSize: 20,
+                        }}
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        fontWeight: "700",
+                        textTransform: "capitalize",
+                      },
                     }}
                   >
-                    Contact
-                  </Button>
-                </Link>
-              </Box>
+                    <Link to="/about">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                          fontSize: 20,
+                        }}
+                      >
+                        About
+                      </Button>
+                    </Link>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        textTransform: "capitalize",
+                      },
+                    }}
+                  >
+                    <Link to="/shop">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          fontWeight: "700",
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          textTransform: "capitalize",
+                          fontSize: 20,
+                        }}
+                      >
+                        Shop
+                      </Button>
+                    </Link>
+                  </Box>
+                </>
+              )}
             </Toolbar>
           </Container>
         </AppBar>
@@ -237,7 +363,7 @@ const Navbar = () => {
           position="fixed"
           style={{
             backgroundColor: "#FFFFFF",
-            top: trigger ? 0 : 40,
+            top: trigger ? 0 : 52,
           }}
         >
           <Container>
@@ -265,6 +391,9 @@ const Navbar = () => {
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
                   color="inherit"
+                  style={{
+                    color: "black",
+                  }}
                 >
                   <MenuIcon />
                 </IconButton>
@@ -287,8 +416,63 @@ const Navbar = () => {
                   }}
                 >
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Link to="/">
+                    <Link
+                      style={{
+                        color: "black",
+                      }}
+                      to="/admin-panel"
+                    >
                       <Typography textAlign="center">{pages[0]}</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      style={{
+                        color: "black",
+                      }}
+                      to="/add"
+                    >
+                      <Typography textAlign="center">{pages[1]}</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      style={{
+                        color: "black",
+                      }}
+                      to="/admin-comments"
+                    >
+                      <Typography textAlign="center">{pages[2]}</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      style={{
+                        color: "black",
+                      }}
+                      to="/"
+                    >
+                      <Typography textAlign="center">{pages[3]}</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      style={{
+                        color: "black",
+                      }}
+                      to="/About"
+                    >
+                      <Typography textAlign="center">{pages[4]}</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      style={{
+                        color: "black",
+                      }}
+                      to="/shop"
+                    >
+                      <Typography textAlign="center">{pages[5]}</Typography>
                     </Link>
                   </MenuItem>
                 </Menu>
@@ -298,155 +482,240 @@ const Navbar = () => {
                 noWrap
                 component="div"
                 sx={{
+                  color: "black",
                   flexGrow: 1,
                   display: { xs: "flex", md: "none" },
                 }}
               >
                 PIZZA
               </Typography>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                <Link to="/add">
-                  <Button
-                    onClick={handleCloseNavMenu}
+              {user.email === "admin@gmail.com" ? (
+                <>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -5,
                     }}
                   >
-                    Add Products
-                  </Button>
-                </Link>
-              </Box>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                <Link to="/admin-panel">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/add">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Add Products
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -3,
                     }}
                   >
-                    Admin Panel
-                  </Button>
-                </Link>
-              </Box>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                <Link to="/admin-comments">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/admin-panel">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -7,
                     }}
                   >
-                    Admin Comments
-                  </Button>
-                </Link>
-              </Box>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                <Link to="/">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/admin-comments">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Admin Comments
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginRight: -8,
                     }}
                   >
-                    Home
-                  </Button>
-                </Link>
-              </Box>
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                  },
-                }}
-              >
-                <Link to="/about">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        fontWeight: "700",
+                        textTransform: "capitalize",
+                      },
+                      marginRight: -4,
                     }}
                   >
-                    About
-                  </Button>
-                </Link>
-              </Box>
+                    <Link to="/about">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        About
+                      </Button>
+                    </Link>
+                  </Box>
 
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                  },
-                }}
-              >
-                <Link to="/shop">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        textTransform: "capitalize",
+                      },
                     }}
                   >
-                    Shop
-                  </Button>
-                </Link>
-              </Box>
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                  },
-                }}
-              >
-                <Link to="/contact">
-                  <Button
-                    onClick={handleCloseNavMenu}
+                    <Link to="/shop">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          fontWeight: "700",
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        Shop
+                      </Button>
+                    </Link>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Box
                     sx={{
-                      my: 1,
-                      color: "black",
-                      display: "block",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
+                      flexGrow: 1,
+                      display: { xs: "none", md: "flex" },
+                      marginLeft: "100px",
+                      marginRight: "40px",
                     }}
                   >
-                    Contact
-                  </Button>
-                </Link>
-              </Box>
+                    <Link to="/">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                          fontSize: 20,
+                        }}
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        fontWeight: "700",
+                        textTransform: "capitalize",
+                        marginRight: 20,
+                      },
+                    }}
+                  >
+                    <Link to="/about">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          fontWeight: "700",
+                          textTransform: "capitalize",
+                          fontSize: 20,
+                        }}
+                      >
+                        About
+                      </Button>
+                    </Link>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: {
+                        xs: "none",
+                        md: "flex",
+                        textTransform: "capitalize",
+                      },
+                    }}
+                  >
+                    <Link to="/shop">
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                          fontWeight: "700",
+                          my: 1,
+                          color: "black",
+                          display: "block",
+                          textTransform: "capitalize",
+                          fontSize: 20,
+                        }}
+                      >
+                        Shop
+                      </Button>
+                    </Link>
+                  </Box>
+                </>
+              )}
             </Toolbar>
           </Container>
         </AppBar>

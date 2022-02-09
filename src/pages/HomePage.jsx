@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "../components/Navbar/Slider";
 import AboutPage from "./AboutPage";
+import GoogleMap from "./GoogleMap";
 
 const HomePage = () => {
   return (
@@ -98,6 +99,7 @@ const HomePage = () => {
           </div>
         </Link>
       </div>
+      <GoogleMap />
     </>
   );
 };

@@ -1,13 +1,17 @@
+import { Container } from "@mui/material";
 import React from "react";
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className="about-page">
       <section id="about" className="about">
-        <h1 style={{ textAlign: "center", fontSize: 80, marginBottom: 50 }}>
+        <h1
+          className="about-h1"
+          style={{ textAlign: "center", fontSize: 80, marginBottom: 50 }}
+        >
           Discover ABOUT US
         </h1>
-        <div className="container">
+        <Container>
           <div className="discription">
             <div className="desc-left">
               <h3>We </h3>
@@ -48,7 +52,7 @@ const AboutPage = () => {
               alt="Event1"
             />
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );

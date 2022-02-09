@@ -35,14 +35,13 @@ const NavbarCart = () => {
       disposer();
     };
   }, []);
-
   return (
     <Slide in={!trigger} mountOnEnter unmountOnExit>
       <AppBar
         position="fixed"
         style={{
           backgroundColor: "rgb(255, 105, 0)",
-          height: 40,
+          height: 52,
         }}
       >
         <Container
@@ -55,39 +54,31 @@ const NavbarCart = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               alignItems: "center",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <div style={{ marginRight: 20 }}>
               <LocalPhoneOutlinedIcon
                 fontSize="small"
                 style={{ color: "white" }}
               />
               <a href="tel:5558920234" style={{ fontSize: 16, color: "white" }}>
                 {" "}
-                0771010022
+                <span className="phone-number">0771010022</span>
               </a>
             </div>
-            <Link to="/cart">
-              <IconButton>
-                <Badge color="error" badgeContent={cartCount}>
-                  <AddShoppingCartOutlinedIcon
-                    fontSize="small"
-                    style={{ color: "white", marginRight: 15, marginLeft: 15 }}
-                  />
-                </Badge>
-              </IconButton>
+            <Link to="/cart" style={{ color: "white", marginRight: 20 }}>
+              <Badge color="default" badgeContent={cartCount}>
+                <AddShoppingCartOutlinedIcon
+                  fontSize="small"
+                  style={{ color: "white" }}
+                />
+              </Badge>
             </Link>
             <Link to="/favorites" style={{ color: "white" }}>
-              <Badge color="error" badgeContent={favoriteCount}>
-                Favorites
+              <Badge color="default" badgeContent={favoriteCount}>
+                <span className="span-favorite">Favorites</span>
                 <FavoriteIcon />
               </Badge>
             </Link>
@@ -103,8 +94,11 @@ const NavbarCart = () => {
               {user ? (
                 <>
                   <div>
-                    <IconButton className="title-user">
-                      {user.displayName ? user.displayName : user.email}
+                    <IconButton
+                      className="title-user"
+                      style={{ color: "white" }}
+                    >
+                      {user ? user.displayName : user.email}
                     </IconButton>
                   </div>
                   <IconButton sx={{ p: 0 }}>
@@ -117,11 +111,15 @@ const NavbarCart = () => {
                   <IconButton
                     onClick={() => dispatch({ type: "USER_SIGN_OUT" })}
                   >
-                    <LogoutOutlinedIcon style={{ width: 25, height: 25 }} />
+                    <LogoutOutlinedIcon
+                      style={{ width: 20, height: 20, color: "white" }}
+                    />
                   </IconButton>
                 </>
               ) : (
-                <Link to="/login">SIGN IN</Link>
+                <Link to="/login" style={{ fontSize: 18 }}>
+                  Sign In
+                </Link>
               )}
             </MenuItem>
             <Link to="/admin-panel">
