@@ -42,7 +42,6 @@ const FilterBlock = () => {
     search.set("_page", 1);
 
     navigate(`${window.location.pathname}?${search.toString()}`);
-    setSearchValue(search.get("q") || "");
     dispatch(getProducts());
   }, [categoriesValue, searchValue]);
 

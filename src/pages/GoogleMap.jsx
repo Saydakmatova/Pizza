@@ -3,7 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 const GoogleMap = (props) => {
   return (
     <div style={{ marginTop: 50 }}>
-      <Map
+      {/* <Map
         className="map"
         google={props.google}
         zoom={1}
@@ -12,13 +12,13 @@ const GoogleMap = (props) => {
       >
         <Marker
           title={"The marker`s title will appear as a tooltip."}
-          position={{ lat: 42.8784, lng: 74.59243 }}
+          position={{ lat: 42.87907550405358, lng: 74.59300383432434 }}
           onClick={props.onMarkerClick}
           name={"Current location"}
         />
 
         <InfoWindow onClose={props.onInfoWindowClose}></InfoWindow>
-      </Map>
+      </Map> */}
     </div>
   );
 };
