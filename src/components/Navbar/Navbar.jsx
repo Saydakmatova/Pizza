@@ -49,9 +49,7 @@ const Navbar = () => {
 
   const trigger = useScrollTrigger();
   const { user } = useSelector((state) => state.userAuthReducer);
-  if (!user) {
-    return <h2>Loading...</h2>;
-  }
+
   return (
     <>
       <Collapse in={trigger}>
@@ -128,7 +126,7 @@ const Navbar = () => {
               >
                 PIZZA
               </Typography>
-              {user.email === "admin@gmail.com" ? (
+              {user && user.email === "admin@gmail.com" ? (
                 <>
                   <Box
                     sx={{
@@ -489,7 +487,7 @@ const Navbar = () => {
               >
                 PIZZA
               </Typography>
-              {user.email === "admin@gmail.com" ? (
+              {user && user.email === "admin@gmail.com" ? (
                 <>
                   <Box
                     sx={{
