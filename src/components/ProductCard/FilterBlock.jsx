@@ -19,7 +19,6 @@ const FilterBlock = () => {
   const [categoriesValue, setCategoriesValue] = useState(
     search.get("categories") || `_${search.get("_order") || ""}` || ""
   );
-
   useEffect(() => {
     if (categoriesValue && !categoriesValue.startsWith("_")) {
       search.set("categories", categoriesValue);

@@ -26,7 +26,6 @@ const CommentsPage = () => {
   if (!posts) {
     return <h2>Loading...</h2>;
   }
-
   return (
     <div className="comments">
       <h3 className="heading">Add A Comment Below</h3>
